@@ -10838,6 +10838,7 @@ __metadata:
     react-native: 0.76.6
     react-native-builder-bob: ^0.32.0
     react-native-gesture-handler: ^2.21.2
+    react-native-loading-spinner-overlay: ^3.0.1
     react-native-safe-area-context: ^5.1.0
     react-native-screens: ^4.4.0
     react-native-webview: ^13.12.5
@@ -10877,6 +10878,9 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+    react-native-loading-spinner-overlay: ^3.0.1
+    react-native-vector-icons: ^10.2.0
+    react-native-webview: ^13.12.5
   languageName: unknown
   linkType: soft
 
