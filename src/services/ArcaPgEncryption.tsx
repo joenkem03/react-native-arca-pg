@@ -1,10 +1,7 @@
 import forge from 'node-forge'; // npm i node-forge
 import JSEncrypt from 'jsencrypt'; // npm i jsencrypt
 
-// // react-native-xml2js.d.ts
-// declare module 'react-native-xml2js';
-// @ts-ignore
-import xml2js from 'react-native-xml2js';
+// import xml2js from 'react-native-xml2js';
 
 export function EncryptCreateOrder(params: any) {
   const payload = {
@@ -83,34 +80,62 @@ function getRsaEncryptionKey(merchantEncryptionKey: string) {
 }
 
 function xmlToPem(xmlKey: any) {
-  var pem = '';
-  const parser = new xml2js.Parser();
-  parser.parseString(xmlKey, function (err: any, result: any) {
-    // console.dir(result)
-    console.log(err);
+  // var pem = '';
+  // const parser = new xml2js.Parser();
+  // parser.parseString(xmlKey, function (err: any, result: any) {
+  //   // console.dir(result)
+  //   console.log(err);
 
-    // Extract Modulus and Exponent
-    const modulusBase64 = result.RSAKeyValue.Modulus[0];
-    const exponentBase64 = result.RSAKeyValue.Exponent[0];
-    // console.log('modulusBase64:', modulusBase64);
-    // console.log('exponentBase64:', exponentBase64);
+  //   // Extract Modulus and Exponent
+  //   const modulusBase64 = result.RSAKeyValue.Modulus[0];
+  //   const exponentBase64 = result.RSAKeyValue.Exponent[0];
+  //   // console.log('modulusBase64:', modulusBase64);
+  //   // console.log('exponentBase64:', exponentBase64);
 
-    var BigInteger = forge.jsbn.BigInteger;
-    function parseBigInteger(b64: any) {
-      return new BigInteger(
-        forge.util.createBuffer(forge.util.decode64(b64)).toHex(),
-        16
-      );
-    }
+  //   var BigInteger = forge.jsbn.BigInteger;
+  //   function parseBigInteger(b64: any) {
+  //     return new BigInteger(
+  //       forge.util.createBuffer(forge.util.decode64(b64)).toHex(),
+  //       16
+  //     );
+  //   }
 
-    var publicKey = forge.pki.setRsaPublicKey(
-      parseBigInteger(modulusBase64), // n
-      parseBigInteger(exponentBase64)
-    ); // e
+  //   var publicKey = forge.pki.setRsaPublicKey(
+  //     parseBigInteger(modulusBase64), // n
+  //     parseBigInteger(exponentBase64)
+  //   ); // e
 
-    // convert a Forge public key to PEM-format
-    var rpem = forge.pki.publicKeyToPem(publicKey);
-    pem = rpem;
-  });
-  return pem;
+  //   // convert a Forge public key to PEM-format
+  //   var rpem = forge.pki.publicKeyToPem(publicKey);
+  //   pem = rpem;
+  // });
+
+  const publicKeyComponents = xmlKey.split('</Modulus><Exponent>');
+  const modulusBase64 = publicKeyComponents[0].replace(
+    '<RSAKeyValue><Modulus>',
+    ''
+  );
+  const exponentBase64 = publicKeyComponents[1].replace(
+    '</Exponent></RSAKeyValue>',
+    ''
+  );
+
+  console.log('modulusBase64:', modulusBase64);
+  console.log('exponentBase64:', exponentBase64);
+
+  var BigInteger = forge.jsbn.BigInteger;
+  function parseBigInteger(b64: any) {
+    return new BigInteger(
+      forge.util.createBuffer(forge.util.decode64(b64)).toHex(),
+      16
+    );
+  }
+
+  var publicKey = forge.pki.setRsaPublicKey(
+    parseBigInteger(modulusBase64), // n
+    parseBigInteger(exponentBase64)
+  ); // e
+
+  // convert a Forge public key to PEM-format
+  return forge.pki.publicKeyToPem(publicKey);
 }

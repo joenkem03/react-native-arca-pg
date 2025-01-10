@@ -82,7 +82,6 @@
     "react": "18.3.1",
     "react-native": "0.76.6",
     "react-native-builder-bob": "^0.32.0",
-    "react-native-xml2js": "^1.0.3",
     "release-it": "^17.10.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
@@ -95,7 +94,8 @@
     "react-native": "*",
     "react-native-loading-spinner-overlay": "^3.0.1",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-webview": "^13.12.5"
+    "react-native-webview": "^13.12.5",
+    "react-native-xml2js": "^1.0.3"
   },
   "workspaces": [
     "example"
@@ -209,6 +209,7 @@
     "jsencrypt": "^3.3.2",
     "react-native-loading-spinner-overlay": "^3.0.1",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-webview": "^13.12.5"
+    "react-native-webview": "^13.12.5",
+    "react-native-xml2js": "^1.0.3"
   }
 }

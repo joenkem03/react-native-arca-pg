@@ -19,10 +19,9 @@ export default function Home({ navigation }: any) {
   const [spinnerText, setSpinnerText] = useState('Processing...');
   const [orderRef, setOrderRef] = useState('');
 
-  const merchant_enc_key =
-    'NDA5NiE8UlNBS2V5VmFsdWU+PE1vZHVsdXM+cGtiZUNnaktDb1VBOTRJWnFmNVMvd2NoWjBsUU1VZEg4WC9QS3REalVJTGwyR2pZNFRlTzZOYVYyRHVIRWQyQ1dibzVkTzdpY01GK0ZaT1AyaFRrU0NpcWNaS0NZbmlNMUdOeUlHa1NPK29JR3BkTTFkK0VFbEpveEVpaFFSM3E4WDJDbEtjVGFTTjJiUjRRVWFVY3I1OHRiVjNYcGRYM0VqQmpoVk5rLzlvTldTVU9mK1U2V3RGOW1Yd0txSk1LV3VwM2VHVnNaUXhoYkkvWHBUdTFLV1dMV0RLTmNrOHZmeDREbGV3V1IvdzVaeTR6TDBlREx2NU11eXROa2N5M2owVVlraDUzY3Q2aEJYRWlRaXdPSDMxMUxXZ2ZjK1RKOHlVS1IvZnBWemMyM1RQSTA0bElwYVZhUmliM2FUb0xOSlh4aHU3bml5eUhkYzFXUlFhSGRwUTY0WXhkYzh5eTJSbUJ5emYzeVd5dHFlZmpzNUxPN1Y2U0hKSm9qT0cyQldmRFhlSDlnY2NOTFNUZGdUNHlLcW1lK1NRdDBQc3ZoSExveW40Q0VwdmZkektDZVJmNjY0QU5jRVEvRjMrbVFZWStoei9FaUZOVUU1RzN2TkZzbm1LTFJRRm9MMVpPWTZyL2U0MzN5Sjh3YkdzN2RmdUhITWF2Z1VYbTRWWUZkWS9tVkdDa2s1WWdpNXl6aVAvbW9xOUFnWjhZQWhQSFl0VmFXNDlzWVlWZWlMRmM4Q1lpOTlsZ3cvN0VsNVBjMkp2SDRnR2pzRnhXbjJ1clg3UjUwK0ZENkRwenhxSkFqdUEwTXV3VVdtNmxIQmhQc0dtNThpRHN1M2tSV3VSalo0MWpiZzZCVW5KSEUyTmNWS2g5ZzJGTlBYWmFhVjJmMHd6YU5HcVZEQjA9PC9Nb2R1bHVzPjxFeHBvbmVudD5BUUFCPC9FeHBvbmVudD48L1JTQUtleVZhbHVlPg==';
-  const api_pub_key = 'ARCA-PUBKEY-TEST-80131d78-8696-4ac8-8faa-b8f027300516';
-  const api_sec_key = 'ARCA-SECKEY-TEST-17d2a598-4722-47e5-b5fd-c2c9b0707aec';
+  const merchant_enc_key = ' ';
+  const api_pub_key = ' ';
+  const api_sec_key = ' ';
   async function creatingOrder() {
     var transRef = `APG-RN${Math.floor(Math.random() * 10000000)}`;
 
