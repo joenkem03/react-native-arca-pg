@@ -1,6 +1,6 @@
 {
   "name": "react-native-arca-pg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "handling integration to ARCA payment gateway for react-native projects",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
