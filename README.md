@@ -17,7 +17,18 @@ import {  CreateOrder, PayOrder, VerifyOrder, Checkout, PayOrderApiRequest, Crea
 // ...
 
 
-const newOrder = await CreateOrder({ first_name: "test", last_name: "tester", mobile: "+2348101234544", country: "NG", email: "joe@techdev.work", amount: 10, reference: "{{unique_transRef}}", description: "Pay", currency: "USD", merchant_encryption_key: "merchant_enc_key", pub_key: "api_pub_key" }) // creates new order, handling both encryption and sending the API request
+const newOrder = await CreateOrder({ 
+  first_name: "test", 
+  last_name: "tester", 
+  mobile: "+2348101234544", 
+  country: "NG", 
+  email: "joe@techdev.work", 
+  amount: 10, 
+  reference: "{{unique_transRef}}", 
+  description: "Pay", 
+  currency: "USD", 
+  merchant_encryption_key: "merchant_enc_key", 
+  pub_key: "api_pub_key" }) // creates new order, handling both encryption and sending the API request
 
 const payload = {
             reference: "unique_transRef", //same unique transRef from create order function
@@ -59,10 +70,34 @@ To make us of arca-pg's checkout for card details collection;
 
   ADDITIONAL FUNCTIONS
 
-  CreateOrderEncrypt() // Only encrypts the plain "Create Order" payload
-  CreateOrderApiRequest() // Only handles sending API request for Create Order
-  PayOrderEncrypt() // Only encrypts the plain "Pay Order" payload
-  PayOrderApiRequest() //  Only handles sending API request for Pay Order
+  CreateOrderEncrypt({
+      first_name: 'test',
+      last_name: 'tester',
+      mobile: '+2348101234544',
+      country: 'US',
+      email: 'joe@techdev.work',
+      amount: 10,
+      reference: transRef,
+      description: 'Pay',
+      currency: 'USD',
+      merchant_encryption_key: merchant_enc_key,
+      pub_key: api_pub_key,
+    }) // Only encrypts the plain "Create Order" payload
+
+  CreateOrderApiRequest( encrypted_orderPayload_string, api_pub_key) // Only handles sending API request for Create Order
+
+  PayOrderEncrypt({
+      reference: orderRefCreated,
+      country: 'US',
+      card: '5123450000000008',
+      cvv: '100',
+      expiry_month: '01',
+      expiry_year: '39',
+      pub_key: api_pub_key,
+      merchant_encryption_key: merchant_enc_key,
+    }) // Only encrypts the plain "Pay Order" payload
+    
+  PayOrderApiRequest( encrypted_paymentPayload_string, api_pub_key) //  Only handles sending API request for Pay Order
 ```
 
 
